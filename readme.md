@@ -18,17 +18,17 @@ node familyTree/
 from the project's root directory and of course, replace `familyTree/` with the name of any task folder.
 
 #### Testing
-Similarly, for testing, you can simply write
+Similarly, for testing **specififc tasks**, you can simply execute
 ```
 jest familyTree/
 ```
 *Note: requires jest installed globally: `npm i -g jest`*
 
-for specific tasks, or
+or for testing **all tasks**:
 ```
 npm run test
 ```
-for all tasks.
+
 
 #### Coverage
 Additionally, generate coverage report with
