@@ -108,6 +108,9 @@ function main() {
         
         class Person {
           constructor(name, parents=[]) {
+            if (name === undefined) { throw new Error('Person must have a name') }
+            if (typeof name !== 'string') { throw new Error('Person\'s name must be a string')}
+            if (!Array.isArray(parents)) { throw new Error('parents must be an array')}
             this.name = name
             this.parents = parents
           }

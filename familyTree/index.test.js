@@ -30,5 +30,17 @@ describe('Person class', () => {
   test('childOf() should return the correct result with no parents', () => {
     expect(meghan.childOf()).toBe("Parents of Meghan: \nunknown")
   })
+
+  test('name error handling', () => {
+    expect(() => new Person()).toThrowError('Person must have a name')
+  })
+  
+  test('name error handling 2', () => {
+    expect(() => new Person(543214)).toThrowError('Person\'s name must be a string')
+  })
+
+  test('parents error handling', () => {
+    expect(() => new Person('example name', 'not an array')).toThrowError('parents must be an array')
+  })
 })
 
