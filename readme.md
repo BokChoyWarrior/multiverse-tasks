@@ -8,31 +8,15 @@ npm i
 ```
 to install dependencies.
 
-## Running tasks
-Until I implement a more interactive method of running tasks, please simply run
-
-```
-node familyTree/
-```
-
-from the project's root directory and of course, replace `familyTree/` with the name of any task folder.
-
-#### Testing
-Similarly, for testing **specififc tasks**, you can simply execute
-```
-jest familyTree/
-```
-*Note: requires jest installed globally: `npm i -g jest`*
-
-or for testing **all tasks**:
+## Testing
+To run tests, you can simply execute
 ```
 npm run test
 ```
 
-
 #### Coverage
 Additionally, generate coverage report with
 ```
-npm coverage
+npm run coverage
 ```
 and simply view the coverage folder in your browser, or via a local server.

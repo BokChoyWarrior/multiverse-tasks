@@ -1,6 +1,9 @@
 # Added by me
 package-lock.json
 
+# Typescript output
+out/
+
 # Logs
 logs
 *.log

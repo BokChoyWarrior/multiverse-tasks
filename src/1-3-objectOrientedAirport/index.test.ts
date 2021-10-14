@@ -1,7 +1,11 @@
-const { Passenger, Bag, Airport, Plane, CrewMember } = require('.')
-
+import Bag from './Bag'
+import CrewMember from './CrewMember'
+import Airport from './Airport'
+import Passenger from './Passenger'
+import Plane from './Plane'
 
 function createValidObjects() {
+  let validObjects: object;
   return validObjects = {
     passengers: [
       new Passenger("normal pass 1", 543215, "E4", false, [new Bag(18)]),
@@ -56,10 +60,9 @@ describe('Bag', () => {
 })
 
 describe('Airport', () => {
-  test('', () => {
+  // test('', () => {
 
-  })
-  
+  // })
 })
 
 describe('Plane', () => {
@@ -89,8 +92,4 @@ describe('CrewMember', () => {
     expect(crewMembers[0].bagLimit).toBe(3)
   })
 
-  test('object instatiation', () => {
-    expect(() => new CrewMember("mary")).toThrow(Error)
-    expect(() => new CrewMember(5324, 33)).toThrow(Error)
-  })
 })

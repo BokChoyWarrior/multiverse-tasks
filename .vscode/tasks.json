@@ -1,0 +1,25 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "tsc-watch",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "Watch Typescript files to build",
+			"detail": "tsc --watch",
+			"isBackground": true
+		},
+		{
+			"type": "npm",
+			"script": "jest-watch",
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "Test + watch typescript files",
+			"detail": "jest --watch ./src/**/*.test.ts"
+		}
+	]
+}
