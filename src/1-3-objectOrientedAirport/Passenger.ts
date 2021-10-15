@@ -9,7 +9,7 @@ export default class Passenger {
 
   isGold: boolean;
 
-  bags: Array<Bag>;
+  bags: Bag[];
 
   bagLimit: number;
 
@@ -18,7 +18,7 @@ export default class Passenger {
     passportNumber: number,
     seatNumber: string,
     isGold: boolean,
-    bags: Array<Bag> = [],
+    bags: Bag[] = [],
   ) {
     this.name = name;
     this.passportNumber = passportNumber;
