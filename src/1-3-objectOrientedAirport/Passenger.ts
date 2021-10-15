@@ -1,4 +1,4 @@
-import Bag from './Bag'
+import Bag from "./Bag";
 
 export default class Passenger {
   name!: string;
@@ -18,7 +18,7 @@ export default class Passenger {
     passportNumber: number,
     seatNumber: string,
     isGold: boolean,
-    bags: Bag[] = [],
+    bags: Bag[] = []
   ) {
     this.name = name;
     this.passportNumber = passportNumber;
@@ -29,16 +29,16 @@ export default class Passenger {
 
     if (bags.length > this.bagLimit) {
       throw new Error(
-        `Too many bags, this passenger can have maximum of ${this.bagLimit} bags`,
+        `Too many bags, this passenger can have maximum of ${this.bagLimit} bags`
       );
     }
   }
 
   addBag(bag: Bag) {
     if (bag.isOverLimit()) {
-      throw new Error('Bag is over the weight limit');
+      throw new Error("Bag is over the weight limit");
     } else if (this.bags.length === this.bagLimit) {
-      throw new Error('Passenger not allowed any more bags');
+      throw new Error("Passenger not allowed any more bags");
     } else {
       this.bags.push(bag);
     }
