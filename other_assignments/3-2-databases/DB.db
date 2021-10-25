@@ -1,0 +1,61 @@
+CREATE TABLE apprenticeships (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
+CREATE TABLE coaches (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  age INTEGER NOT NULL
+ );
+
+CREATE TABLE cohorts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT DEFAULT "123",
+  coach_id INTEGER,
+  FOREIGN KEY (coach_id) REFERENCES coaches(id)
+);
+
+CREATE TABLE apprentices (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  age INTEGER,
+  cohort_id INTEGER,
+  apprenticeship_id INTEGER,
+  organisation_id INTEGER,
+  FOREIGN KEY (cohort_id) REFERENCES cohorts(id),
+  FOREIGN KEY (apprenticeship_id) REFERENCES apprenticeships(id),
+  FOREIGN KEY (organisation_id) REFERENCES organisations(id)
+);
+
+CREATE TABLE organisations (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
+
+
+INSERT INTO apprenticeships (name) VALUES
+  ("Software Engineering"),
+  ("Hardware Engineering"),
+  ("Digital Marketing");
+
+INSERT INTO coaches (name, age) Values
+  ("David Miller", 99),
+  ("Millie Davids", 28),
+  ("Chuck-e-Cheese", 5000000000);
+
+INSERT INTO cohorts (name, coach_id) VALUES
+  (NULL, 2),
+  ("cool coderz collective", 1);
+
+INSERT INTO organisations (name) VALUES
+("Hey Bear"),
+("Sky"),
+("BBC");
+
+ INSERT INTO apprentices (name, age, cohort_id, apprenticeship_id, organisation_id) VALUES
+ ("Harvey Cambridge", 50, 2, 1, 1),
+ ("Boris Johnson", 51, 2, 1, 3);
+
+ 
