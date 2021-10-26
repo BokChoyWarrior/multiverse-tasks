@@ -1,0 +1,106 @@
+------------------------------- SCHEMA -------------------------------
+
+CREATE TABLE restaurants (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
+CREATE TABLE menus (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT,
+  restaurant_id INTEGER NOT NULL,
+  FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+ );
+
+CREATE TABLE menu_items (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  price INTEGER,
+  menu_id INTEGER,
+  FOREIGN KEY (menu_id) REFERENCES menus(id)
+);
+
+INSERT INTO restaurants (name) VALUES
+  ("Bubb's Grub"),
+  ("Milho Frito"),
+  ("MCDONALDS");
+
+INSERT INTO menus (title, restaurant_id) VALUES
+  ("Beginning Bites", 1),
+  ("Massive Mains", 1),
+  ("Sweet Mouthfuls", 1),
+  ("Entradas", 2),
+  ("Prato", 2),
+  ("Sobremesa", 2),
+  ("'FOOD'", 3);
+
+INSERT INTO menu_items (name, price, menu_id) VALUES
+  ("Salad", 320, 1),
+  ("Cheese Board", 1255, 1),
+  ("Halloumi Fries with Sweet Chilli Sauce", 625, 1),
+  
+  ("Beef Borger", 1295, 2),
+  ("Cajun Chicken Borger", 1155, 2),
+  ("Cajun Wedges", 395, 2),
+  ("Sweet Potato Fries", 495, 2),
+  ("Triple Cooked Fries", 495, 2),
+  
+  ("Pancakes with Maple Syrup and Bacon", 645, 3),
+  ("Pain Au Chocolat", 295, 3),
+  
+  ("Lapas", 550, 4),
+  ("Lapas (to share)", 1420, 4),
+  ("Malasadas", 820, 4),
+  ("Espetada e Bolo de Caco", 1825, 5),
+  ("Espada e Banana", 1415, 5),
+  ("Milho Frito", 955, 5),
+  ("Madeira", 495, 6),
+  ("Cherimoya Pudding", 540, 6),
+  ("Cherimoya Liqueur", 280, 6),
+  
+  ("Cheeseburger", 490, 7),
+  ("Big Mac", 680, 7),
+  ("Chicken Burger", 625, 7),
+  ("Happy Meal", 495, 7),
+  ("McFlurry Chocolate", 350, 7),
+  ("McFlurry Mini Egg", 415, 7);
+  
+  
+
+------------------------------ QUERIES ---------------------------------------
+
+
+-- select all menu items from specific restaurant
+
+SELECT menus.title AS "Menu", name AS "Item", price AS "Price (Pence)" FROM menu_items i
+JOIN menus ON menu_id = menus.id
+WHERE menus.restaurant_id = 2
+-- WHERE menus.id = 4 -- uncomment for just one menu's items, and coment above line too
+ORDER BY menus.title;
+
+-- select all restaurants and count each number of menus
+
+SELECT r.name AS "Restaurant", COUNT(menus.id) AS "No. Menus"
+FROM restaurants r, menus
+WHERE r.id = menus.restaurant_id
+GROUP BY r.name;
+
+-- select all menus, sum cost of items and sort descending
+
+SELECT r.name AS "Restaurant", SUM(i.price) AS "Total Price", COUNT(i.name) AS "No. Items", ROUND(AVG(i.price)) AS "Avg. Price"
+FROM menu_items i
+JOIN restaurants r
+ON r.id = m.restaurant_id
+JOIN menus m
+ON m.id = i.menu_id
+WHERE  i.menu_id
+GROUP BY r.name
+ORDER BY SUM(i.price) DESC
+;
+
+
+
+
+
+
+
